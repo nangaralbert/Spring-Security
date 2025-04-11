@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/v1/demo")
 public class DemoController {
 
-    @GetMapping("/")
+    @GetMapping("/home")
     public String home(){
         return "This is a public API";
     }
