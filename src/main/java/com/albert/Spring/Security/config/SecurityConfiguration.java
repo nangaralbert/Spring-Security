@@ -3,6 +3,7 @@ package com.albert.Spring.Security.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -16,6 +17,7 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
+@EnableMethodSecurity
 public class SecurityConfiguration {
     @Bean
     PasswordEncoder passwordEncoder(){
@@ -25,11 +27,11 @@ public class SecurityConfiguration {
     @Bean
     public UserDetailsService userDetailsService(){
         UserDetails userDetailsOne = User.withUsername("User1")
-                .password(passwordEncoder().encode("pass1")).build();
+                .password(passwordEncoder().encode("pass1")).roles("USER").build();
         UserDetails userDetailsTwo = User.withUsername("User2")
-                .password(passwordEncoder().encode("pass2")).build();
+                .password(passwordEncoder().encode("pass2")).roles("USER").build();
         UserDetails admin = User.withUsername("admin")
-                .password(passwordEncoder().encode("admin1")).build();
+                .password(passwordEncoder().encode("admin1")).roles("ADMIN").build();
         return new InMemoryUserDetailsManager(admin,userDetailsOne,userDetailsTwo);
     }
 
