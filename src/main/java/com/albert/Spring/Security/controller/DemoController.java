@@ -10,7 +10,17 @@ import org.springframework.web.bind.annotation.RestController;
 public class DemoController {
 
     @GetMapping("/")
-    public String hello(){
-        return "Hello World";
+    public String home(){
+        return "This is a public API";
+    }
+
+    @GetMapping("/admin")
+    public String admin(){
+        return "This is an admin API";
+    }
+
+    @GetMapping("/user")
+    public String user(){
+        return "This is a user API";
     }
 }
