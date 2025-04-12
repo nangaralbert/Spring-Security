@@ -22,7 +22,7 @@ public class DemoController {
     }
 
     @GetMapping("/user")
-    @PreAuthorize("hasRole('USER')")
+//    @PreAuthorize("hasRole('USER')")
     public String user(){
         return "This is a user API";
     }
